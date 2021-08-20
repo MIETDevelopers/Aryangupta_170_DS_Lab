@@ -2,8 +2,9 @@
 //Date:17 Aug 2021
 //Assignment 1: Find the cheapest walnut in Raghunath Bazaar of Jammu
 
-#include<stdio.h>//header file for Standard input and output 
-#include<stdlib.h>//Header file for standard library used to allocate memory(malloc function, free function)
+#include<stdio.h>//header file for Standard input and output include the functions to print and take input from the user 
+#include<stdlib.h>//Header file is used to allocate memory(malloc function, free function)
+#define max 40
 
 void data();//data function prototype
 void view();//view function prototype
@@ -13,7 +14,7 @@ void min();//min function prototype
 //struct data again and again we can simply use structure variable 
 typedef struct data//Structure of the node
 {
-	char *shop;//structre member which is a string and will hold the name of the shop
+	char shop[max];//structre member which is a string and will hold the name of the shop
 	int walnuts;//integer type structure member which will store the price of walnut
 	int Almonds;//integer type structure member which will store the price of almonds
 	struct data *next;//this will hold the address of the next node
@@ -26,7 +27,7 @@ int main()
 	int choice;//variable declaration
 	do
 	{
-		//as it is a menu based program so here we are giving user the choice 
+		//as it is a menu based program so here we are printing the menu user 
 		printf("Press 1 to insert data\n");
 		printf("Press 2 to find the minimum price of walnuts\n");
 		printf("Press 3 to view all data\n");
@@ -88,10 +89,9 @@ void data()//data function definition which will store the data of shops and ite
 			{
 				temp=temp->next;
 			}
-			temp->next=ptr;//assigning the next of temp the address of ptr which is the new node
+			temp->next=ptr;//assigning the next of temp the address of ptr which is the new node which means the data is inserted
 		}
 	}
-
 }
 
 void min()//function to finding the minimum value of walnut
@@ -115,7 +115,7 @@ void min()//function to finding the minimum value of walnut
 		{
 			if (min>temp->walnuts)//if the price of min i.e. price of walnut is greater than the price of the walnut of next shop
 			{
-				s=temp->shop;// then teh value of s, a and min will move to the shop which has the price of walnut less than the previous shop
+				s=temp->shop;// then the value of s, a and min will move to the shop which has the price of walnut less than the previous shop
 				a=temp->Almonds;
 				min=temp->walnuts;
 			}
